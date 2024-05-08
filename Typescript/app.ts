@@ -62,3 +62,26 @@ function setInfo(student: Student): void {
   console.log(student);
 }
 setInfo(std);
+
+// 타입 별칭
+type strOrNum = number | string;
+let item: number;
+
+let numStr: strOrNum = 100;
+function convertToString(val: strOrNum): string {
+  // 타입가드
+  if (typeof val === "string") {
+    item = 0;
+  } else {
+    item = val;
+  }
+  return String(val);
+}
+function convertToNumber(val: strOrNum): number {
+  return Number(val);
+}
+console.log(convertToString(200));
+console.log(convertToNumber(200));
+
+// 튜플 : 타입의 순서가 정해져 있다.
+let greeting: [number, string, boolean] = [1, "hello", true];
