@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import TodoModal from "./TodoModal";
 
 type Todo = {
   id: number;
@@ -14,6 +16,10 @@ const TodoList: React.FC = () => {
     { id: 3, text: "미팅하기", isChecked: false },
   ]);
 
+  const [newTodo, setNewTodo] = useState<string>("");
+  const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+
   const handleCheckedChange = (itemId: number) => {
     setTodos((prevItems) =>
       prevItems.map((item) =>
@@ -22,11 +28,40 @@ const TodoList: React.FC = () => {
     );
   };
 
+  const addTodo = () => {
+    if (newTodo.trim() !== "") {
+      setTodos([...todos, { id: Date.now(), text: newTodo, isChecked: false }]);
+      setNewTodo("");
+    }
+  };
+
+  const removeTodo = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const handleTodoClick = (todo: Todo) => {
+    setShowDetail(true);
+    setSelectedTodo(todo);
+  };
+
+  const handleCloseDetail = () => {
+    setShowDetail(false);
+  };
+
   return (
     <div className="container">
       <h1>{title}</h1>
       <p></p>
       <div className="container">
+        <div>
+          <input
+            type="text"
+            placeholder="할 일 입력"
+            onChange={(e) => setNewTodo(e.target.value)}
+            style={{ marginRight: "10px", writingMode: "horizontal-tb" }}
+          />
+          <Button onClick={addTodo}>추가</Button>
+        </div>
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
@@ -34,13 +69,22 @@ const TodoList: React.FC = () => {
                 type="checkbox"
                 onChange={() => handleCheckedChange(todo.id)}
               ></input>
-              <span>
+              <span onClick={() => handleTodoClick(todo)}>
                 {todo.isChecked ? <del>{todo.text}</del> : <span>{todo.text}</span>}
               </span>
+              <button
+                onClick={() => {
+                  removeTodo(todo.id);
+                }}
+                className="delbutton"
+              >
+                삭제
+              </button>
             </li>
           ))}
         </ul>
       </div>
+      <TodoModal show={showDetail} todo={selectedTodo} handleClose={handleCloseDetail} />
     </div>
   );
 };
