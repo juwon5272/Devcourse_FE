@@ -1,14 +1,19 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function Header() {
   return (
-    <div>
+    <HeaderStyle>
       <h1>React Book Store</h1>
-    </div>
+    </HeaderStyle>
   );
 }
 
-const HeaderStyle = styled.header``;
+const HeaderStyle = styled.header`
+  background-color: ${({ theme }) => theme.color.background};
 
+  h1 {
+    color: ${({ theme }) => theme.color.primary};
+  }
+`;
 export default Header;
