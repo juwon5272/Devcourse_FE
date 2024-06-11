@@ -1,5 +1,5 @@
-type ThemeName = "light" | "dark";
-type ColorKey = "primary" | "background" | "secondary" | "third";
+export type ThemeName = 'light' | 'dark';
+type ColorKey = 'primary' | 'background' | 'secondary' | 'third';
 
 interface Theme {
   name: ThemeName;
@@ -9,21 +9,21 @@ interface Theme {
 }
 
 export const light: Theme = {
-  name: "light",
+  name: 'light',
   color: {
-    primary: "brown",
-    background: "lightgray",
-    secondary: "blue",
-    third: "green",
+    primary: 'brown',
+    background: 'lightgray',
+    secondary: 'blue',
+    third: 'green',
   },
 };
 
 export const dark: Theme = {
-  name: "dark",
+  name: 'dark',
   color: {
-    primary: "coral",
-    background: "midnightblue",
-    secondary: "darkblue",
-    third: "darkgreen",
+    primary: 'coral',
+    background: 'midnightblue',
+    secondary: 'darkblue',
+    third: 'darkgreen',
   },
 };
