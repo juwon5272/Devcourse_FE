@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import Header from "../components/common/Header";
-import { formatNumber } from "../utils/format";
+import styled from 'styled-components';
+import Header from '../components/common/Header';
+import { formatNumber } from '../utils/format';
 
 function Home() {
   const COUNT = 10000;
   return (
-    <div>
+    <HeaderStyle>
       <Header />
       <div>Book Store!!</div>
       <div>count : {formatNumber(COUNT)}</div>
-    </div>
+    </HeaderStyle>
   );
 }
 
