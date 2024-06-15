@@ -1,4 +1,5 @@
 import Button from "../components/common/Button";
+import InputText from "../components/common/InputText";
 import { Title } from "../components/common/Title";
 
 const Home = () => {
@@ -10,7 +11,7 @@ const Home = () => {
       <Button size="large" scheme="normal">
         테스트
       </Button>
-      <div>home body</div>
+      <InputText placeholder="Choose" />
     </>
   );
 };
