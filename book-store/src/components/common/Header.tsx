@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../../assets/images/logo.png";
 import { FaSignInAlt, FaRegUser } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const CATEGORY = [
   {
     id: null,
@@ -32,9 +32,9 @@ function Header() {
         <ul>
           {CATEGORY.map((item) => (
             <li key={item.id}>
-              <a href={item.id === null ? `/books?` : `/books?category_id=${item.id}`}>
+              <Link to={item.id === null ? `/books?` : `/books?category_id=${item.id}`}>
                 {item.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -43,24 +43,24 @@ function Header() {
         <>
           <ul>
             <li>
-              <a href="/cart">장바구니</a>
+              <Link to="/cart">장바구니</Link>
             </li>
             <li>
-              <a href="/orderlist">주문 내역</a>
+              <Link to="/orderlist">주문 내역</Link>
             </li>
           </ul>
           <ul>
             <li>
-              <a href="/login">
+              <Link to="/login">
                 <FaSignInAlt />
                 로그인
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/signup">
+              <Link to="/signup">
                 <FaRegUser />
                 회원가입
-              </a>
+              </Link>
             </li>
           </ul>
         </>
