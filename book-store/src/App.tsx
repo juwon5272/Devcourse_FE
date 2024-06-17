@@ -3,6 +3,7 @@ import Layout from "./components/layout/layout.tsx";
 import { BookStoreThemeProvider } from "./context/themeContext.tsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Error from "./components/common/Error.tsx";
+import Signup from "./pages/Signup.tsx";
 
 const routes = [
   {
@@ -17,6 +18,15 @@ const routes = [
   {
     path: "/books",
     element: <Layout> 도서 목록</Layout>,
+    errorElement: <Error />,
+  },
+  {
+    path: "/signup",
+    element: (
+      <Layout>
+        <Signup />
+      </Layout>
+    ),
     errorElement: <Error />,
   },
 ];
